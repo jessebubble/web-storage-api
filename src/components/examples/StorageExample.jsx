@@ -6,9 +6,9 @@ import clsx from 'clsx';
 import { useState } from 'react';
 import { createApi } from 'unsplash-js';
 
-
 const unsplash = new createApi({
     accessKey: import.meta.env.VITE_UNSPLASH_ACCESS_KEY,
+    apiUrl: import.meta.env.VITE_UNSPLASH_API_URL,
 });
         
 export function WebStorageExample() {
@@ -39,11 +39,15 @@ export function WebStorageExample() {
     };
 
     const handleRandomImageChange = () => {
-        unsplash.photos.getRandom({ query: 'nature' }).then((result) => {
+        unsplash.photos.getRandom({ 
+            query: 'food',
+            orientation: 'landscape',
+            count: 1,
+        }).then((result) => {
             if (result.errors) {
-                console.log('error occurred: ', result.errors[0]);
+                console.log('Error occurred: ', result.errors[0]);
             } else {
-                const randomImageURL = result.response.urls.regular;
+                const randomImageURL = result.response[0].urls.regular;
                 setRandomImageURL(randomImageURL);
                 localStorage.setItem('randomImageURL', randomImageURL);
 
@@ -152,6 +156,7 @@ export function WebStorageExample() {
                                                     'rounded-lg w-full h-32',
                                                     randomImageURL ? 'opacity-0' : 'opacity-100',
                                                 )}
+                                                
                                             />
                                         </div>
                                     </div>

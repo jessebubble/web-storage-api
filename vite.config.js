@@ -13,6 +13,7 @@ export default {
         'process.env': {
             VITE_UNSPLASH_ACCESS_KEY: JSON.stringify(process.env.VITE_UNSPLASH_ACCESS_KEY),
             VITE_UNSPLASH_SECRET_KEY: JSON.stringify(process.env.VITE_UNSPLASH_SECRET_KEY),
+            VITE_UNSPLASH_API_URL: JSON.stringify(process.env.VITE_UNSPLASH_API_URL),
         },
     },
 };
