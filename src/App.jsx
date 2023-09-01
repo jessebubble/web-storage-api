@@ -1,4 +1,5 @@
 import { PageIntro } from './components/PageIntro';
+import { WebStorageExample } from './components/examples/StorageExample';
 
 function Footer() {
     return (
@@ -37,6 +38,7 @@ export default function App() {
                 </p>
             </PageIntro>
 
+            <WebStorageExample />
             <Footer />
         </>
     );
